@@ -47,6 +47,7 @@ function on.backspaceKey()
 end
 
 function on.charIn(char)
+    if not input == 1 then return end
     if char == '0' then number = (10 * number) + 0 end
     if char == '1' then number = (10 * number) + 1 end
     if char == '2' then number = (10 * number) + 2 end
