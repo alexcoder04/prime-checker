@@ -1,6 +1,7 @@
 
 build:
-	luna main.lua prime-checker.tns
+	nspire-merge --in ../libnlmsgbox/msgbox.lua ./main.lua
+	luna out.lua prime-checker.tns
 
 clean:
 	$(RM) out.lua

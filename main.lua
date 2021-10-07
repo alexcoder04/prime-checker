@@ -24,7 +24,28 @@ function is_prime(n)
     return true
 end
 
+function show_about_box()
+    messagebox.title = "About primes-checker"
+    messagebox.text = "https://github.com/alexcoder04/primes-checker"
+    messagebox.open = true
+    platform.window:invalidate()
+end
+
+function on.construction()
+    menu = {
+        {"Help", 
+            {"About", show_about_box}
+        }
+    }
+    toolpalette.register(menu)
+end
+
+function on.escapeKey()
+    if check_messagebox("escape") == true then return end
+end
+
 function on.enterKey()
+    if check_messagebox("enter") == true then return end
     if input == 0 or input == 3 then
         input = 1
         number = 0
@@ -47,7 +68,7 @@ function on.backspaceKey()
 end
 
 function on.charIn(char)
-    if not input == 1 then return end
+    if input ~= 1 then return end
     if char == '0' then number = (10 * number) + 0 end
     if char == '1' then number = (10 * number) + 1 end
     if char == '2' then number = (10 * number) + 2 end
@@ -102,5 +123,7 @@ function on.paint(gc)
         end
         gc:setColorRGB(0, 0, 0)
     end
+
+    draw_messagebox(gc)
 end
 
