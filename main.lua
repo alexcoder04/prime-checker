@@ -1,6 +1,6 @@
 
 -- 0=default, 1=input, 2=calculating, 3=result
-input = 0
+mode = 0
 number = 0
 number_is_prime = false
 
@@ -24,40 +24,19 @@ function is_prime(n)
     return true
 end
 
-function show_about_box()
-    messagebox.title = "About primes-checker"
-    messagebox.text = "https://github.com/alexcoder04/primes-checker"
-    messagebox.open = true
-    platform.window:invalidate()
-end
-
-function on.construction()
-    menu = {
-        {"Help", 
-            {"About", show_about_box}
-        }
-    }
-    toolpalette.register(menu)
-end
-
-function on.escapeKey()
-    if check_messagebox("escape") == true then return end
-end
-
 function on.enterKey()
-    if check_messagebox("enter") == true then return end
-    if input == 0 or input == 3 then
-        input = 1
+    if mode == 0 or mode == 3 then
+        mode = 1
         number = 0
         platform.window:invalidate()
         return
     end
 
-    if input == 1 then
-        input = 2
+    if mode == 1 then
+        mode = 2
         platform.window:invalidate()
         number_is_prime = is_prime(number)
-        input = 3
+        mode = 3
         platform.window:invalidate()
     end
 end
@@ -68,7 +47,7 @@ function on.backspaceKey()
 end
 
 function on.charIn(char)
-    if input ~= 1 then return end
+    if mode ~= 1 then return end
     if char == '0' then number = (10 * number) + 0 end
     if char == '1' then number = (10 * number) + 1 end
     if char == '2' then number = (10 * number) + 2 end
@@ -83,20 +62,21 @@ function on.charIn(char)
 end
 
 function on.paint(gc)
+    -- heading
     gc:setFont("sansserif", "b", 12)
     gc:drawString("prime checker", 0, 0, "top")
     gc:setFont("sansserif", "r", 12)
 
     -- draw status
-    if input == 0 then
+    if mode == 0 then
         gc:drawString("press enter to input the number", 0, 20, "top")
-    elseif input == 1 then
+    elseif mode == 1 then
         gc:setColorRGB(0, 0, 255)
         gc:drawString("press enter to check your number", 0, 20, "top")
         gc:setColorRGB(0, 0, 0)
-    elseif input == 2 then
+    elseif mode == 2 then
         gc:drawString("checking your number...", 0, 20, "top")
-    elseif input == 3 then
+    elseif mode == 3 then
         gc:setColorRGB(0, 255, 0)
         gc:drawString("result is there. press enter to check another", 0, 20, "top")
         gc:setColorRGB(0, 0, 0)
@@ -110,7 +90,7 @@ function on.paint(gc)
     gc:drawString(to_draw, 0, 40, "top")
 
     -- result
-    if input == 3 then
+    if mode == 3 then
         if number == 0 then
             gc:setColorRGB(255, 0, 0)
             gc:drawString("number is zero", 0, 60, "top")
@@ -124,6 +104,10 @@ function on.paint(gc)
         gc:setColorRGB(0, 0, 0)
     end
 
-    draw_messagebox(gc)
+    -- link
+    gc:setFont("sansserif", "r", 10)
+    gc:drawString("for more info, please check", 40, 170, "top")
+    gc:setColorRGB(0, 0, 255)
+    gc:drawString("https://github.com/alexcoder04/prime-checker", 40, 180, "top")
 end
 
