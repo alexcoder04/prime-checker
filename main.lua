@@ -42,8 +42,17 @@ function on.enterKey()
 end
 
 function on.backspaceKey()
-    number = number - (number % 10)
-    platform.window:invalidate()
+    if mode == 3 then
+        mode = 1
+        number = 0
+        platform.window:invalidate()
+        return
+    end
+    if mode == 1 then
+        number = (number - (number % 10)) / 10
+        platform.window:invalidate()
+        return
+    end
 end
 
 function on.charIn(char)
