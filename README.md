@@ -21,7 +21,7 @@ For pre-built `.tns`-files, check out the
 #### Requirements
 
  - [Luna](https://github.com/ndless-nspire/Luna)
- - [TI-Resource-Merge](https://github.com/DaveDuck321/TI-Resource-Merge) (as `nspire-merge` in your `$PATH`)
+ - [nspire-merge](https://github.com/alexcoder04/nspire-merge)
  - [GNU Make](https://www.gnu.org/software/make/)
 
 #### Building
