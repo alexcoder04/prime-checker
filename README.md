@@ -3,8 +3,7 @@
 
 A very simple program to check if a number is prime on the TI-Nspire calculator.
 
-<img src="./assets/screenshot0.jpeg" style="width: 45%;">
-<img src="./assets/screenshot1.jpeg" style="width: 45%;">
+<img src="./assets/screenshot0.jpeg" style="width: 45%;"><img src="./assets/screenshot1.jpeg" style="width: 45%;">
 
 ## Method
 
