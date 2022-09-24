@@ -1,10 +1,18 @@
 
+NAME = prime-checker
+TEMP_LUA = out.lua
+OUT_FILE = $(NAME).tns
+ADD_PATH = /home/alex/Scripts:/home/alex/.local/bin
+
+all: clean build upload
+
 build:
-	nspire-merge --out out.lua gui.lua main.lua
-	luna out.lua prime-checker.tns
+	nspire-merge --out $(TEMP_LUA) gui.lua main.lua
+	luna $(TEMP_LUA) $(OUT_FILE)
 
 clean:
-	$(RM) out.lua prime-checker.tns
+	$(RM) $(TEMP_LUA) $(OUT_FILE)
 
-.PHONY: clean build
+upload:
+	PATH=$(ADD_PATH):$(PATH) uploadnspire $(OUT_FILE)
 
