@@ -28,10 +28,9 @@ For pre-built `.tns`-files, check out the
 
 #### Building
 
-Running `make clean install` in the project directory will create a `prime-checker.tns` file
+Running `make clean build` in the project directory will create a `prime-checker.tns` file
 which can be copied onto the calculator
 
 ## Features to be implemented in the future (maybe)
 
  - [ ] factorisation into primes
-
