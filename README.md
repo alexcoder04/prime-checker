@@ -31,6 +31,10 @@ For pre-built `.tns`-files, check out the
 Running `make clean build` in the project directory will create a `prime-checker.tns` file
 which can be copied onto the calculator
 
+## Note
+
+Depending on you exact model and settings, you may already have the built-in `isPrime()`-method :)
+
 ## Features to be implemented in the future (maybe)
 
  - [ ] factorisation into primes
